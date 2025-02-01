@@ -22,7 +22,7 @@ from safetensors import tensorflow as sf
 import numpy as np
 import shutil
 import glob
-from tensorflow.keras.mixed_precision import experimental as mixed_precision
+from tensorflow.keras.mixed_precision import experimental as mixed_precision # type: ignore
 
 # Set the policy to mixed precision
 policy = mixed_precision.Policy('mixed_float16')
