@@ -22,11 +22,10 @@ from safetensors import tensorflow as sf
 import numpy as np
 import shutil
 import glob
-from tensorflow.keras.mixed_precision import experimental as mixed_precision # type: ignore
+from tensorflow.keras import mixed_precision
 
 # Set the policy to mixed precision
-policy = mixed_precision.Policy('mixed_float16')
-mixed_precision.set_policy(policy)
+mixed_precision.set_global_policy('mixed_float16')
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Fine-tune Dakitari-Instruct Model")
