@@ -363,29 +363,24 @@ class DakitariInstructModel(keras.Model):
         self.built = True
     
     def call(self, inputs, training=False):
-        batch_size = tf.shape(inputs)[0]
-        seq_len = tf.shape(inputs)[1]
-
+        # Extract input tensors from the dictionary
+        input_ids = inputs['input_ids']
+        attention_mask = inputs['attention_mask']
+        
+        batch_size = tf.shape(input_ids)[0]
+        seq_len = tf.shape(input_ids)[1]
+        
+        # Continue with your model logic using input_ids and attention_mask
+        # Example: mask = tf.ones((batch_size, seq_len))
         mask = tf.ones((batch_size, seq_len))
-        
-        # Handle different input types
-        if isinstance(inputs, dict):
-            x = inputs['input_ids']
-            attention_mask = inputs.get('attention_mask', None)
-        else:
-            x = inputs
-            attention_mask = None
-        
-        # Convert inputs to float32 if needed
-        x = tf.cast(x, tf.int32)
-        
+
         # Create attention mask if provided
         if attention_mask is not None:
             attention_mask = tf.cast(attention_mask, tf.float32)
             attention_mask = attention_mask[:, tf.newaxis, tf.newaxis, :]
         
         # Embedding layer
-        x = self.embedding_layer(x)
+        x = self.embedding_layer(input_ids)
         
         # Apply transformer blocks
         for block in self.transformer_blocks:
