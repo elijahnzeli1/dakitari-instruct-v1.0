@@ -1,0 +1,36 @@
+Epoch 1/3
+Training: 100%|██████████████████████████████████████████████████████████████████████████████████████| 25/25 [33:54<00:00, 81.37s/it, loss=6.3261, perplexity=558.95]
+
+Epoch 1 Summary:
+Average Loss: 6.3261
+Perplexity: 558.95
+
+Epoch 2/3
+Training: 100%|██████████████████████████████████████████████████████████████████████████████████████| 25/25 [36:11<00:00, 86.87s/it, loss=5.5589, perplexity=259.54]
+
+Epoch 2 Summary:
+Average Loss: 5.5589
+Perplexity: 259.54
+
+Epoch 3/3
+Training: 100%|██████████████████████████████████████████████████████████████████████████████████████| 25/25 [34:32<00:00, 82.89s/it, loss=5.3266, perplexity=205.74]
+
+Epoch 3 Summary:
+Average Loss: 5.3266
+Perplexity: 205.74
+
+Saving model...
+Error saving model: 'Variable' object has no attribute 'astype'
+
+Converting model to safetensors format...
+Traceback (most recent call last):
+  File "C:\Users\ELITEBOOK 840 G3\Dakitari-Instruct\advanced_training.py", line 611, in <module>
+    main()
+  File "C:\Users\ELITEBOOK 840 G3\Dakitari-Instruct\advanced_training.py", line 605, in main
+    if convert_to_safetensors(model, args.output_dir):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ELITEBOOK 840 G3\Dakitari-Instruct\advanced_training.py", line 436, in convert_to_safetensors
+    tensor = np.ascontiguousarray(tensor.astype(np.float32))
+                                  ^^^^^^^^^^^^^
+AttributeError: 'Variable' object has no attribute 'astype'. Did you mean: '_dtype'?
+(venv) PS C:\Users\ELITEBOOK 840 G3\Dakitari-Instruct>  

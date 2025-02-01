@@ -1,0 +1,71 @@
+# Python-specific ignores
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.env/
+.venv/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Model checkpoints and weights
+# checkpoints/
+# *.h5
+# *.weights
+# *.keras
+# *.pth
+# *.pt
+
+# Datasets and data files
+datasets/
+# *.json
+*.csv
+*.zip
+*.tar.gz
+
+# Logs and debugging
+logs/
+*.log
+tensorboard/
+
+# IDE-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Machine Learning specific
+*.pkl
+*.joblib
+
+# Sensitive information
+*.env
+secrets.json
+
+# Colab-specific
+*.ipynb_checkpoints/
+
+# TensorFlow SavedModel directories
+*_savedmodel/
+
+# Miscellaneous
+.tmp/
+temp/
+*.bak
+*.swp
+
+# Specific to your project
+dakitari_instruct/

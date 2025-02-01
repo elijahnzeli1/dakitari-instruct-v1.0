@@ -1,0 +1,12 @@
+{
+  "metadata": {
+    "format": "tf"
+  },
+  "weight_map": {
+    "embeddings": "model.safetensors",
+    "kernel": "model.safetensors",
+    "bias": "model.safetensors",
+    "gamma": "model.safetensors",
+    "beta": "model.safetensors"
+  }
+}
