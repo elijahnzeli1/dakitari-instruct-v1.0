@@ -255,7 +255,7 @@ def main():
             clip_value_min=0,
             clip_value_max=vocab_size - 1
         )
-        mask = tf.cast(y_true != 0, tf.float32)
+        mask = tf.cast(y_true != 0, tf.float16)  # Ensure mask is float16
         loss = tf.keras.losses.sparse_categorical_crossentropy(y_true, y_pred, from_logits=False)
         return tf.reduce_sum(loss * mask) / tf.reduce_sum(mask)
     
