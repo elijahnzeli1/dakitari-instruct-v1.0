@@ -165,6 +165,9 @@ class MixtureOfExperts(layers.Layer):
         self.built = True
     
     def call(self, inputs, training=False):
+        # Ensure inputs are float16
+        inputs = tf.cast(inputs, dtype=tf.float16)  # Cast inputs to float16
+        
         batch_size = tf.shape(inputs)[0]
         seq_len = tf.shape(inputs)[1]
         
@@ -203,7 +206,7 @@ class MixtureOfExperts(layers.Layer):
             expert_output = self.experts[i](expert_input)
             
             # Combine expert outputs weighted by gates
-            gate_mask = tf.cast(tf.equal(top_k_indices, i), tf.float32)
+            gate_mask = tf.cast(tf.equal(top_k_indices, i), tf.float16)
             gates = top_k_gates * gate_mask
             gates = tf.reduce_sum(gates, axis=-1, keepdims=True)
             expert_outputs += expert_output * gates
