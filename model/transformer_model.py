@@ -193,7 +193,7 @@ class MixtureOfExperts(layers.Layer):
         for i in range(self.num_experts):
             # Find tokens routed to this expert
             expert_mask = tf.reduce_any(tf.equal(top_k_indices, i), axis=-1)
-            expert_mask = tf.cast(expert_mask, tf.float32)
+            expert_mask = tf.cast(expert_mask, dtype=tf.float16)  # Cast expert_mask to float16
             expert_mask = tf.expand_dims(expert_mask, -1)
             
             # Get expert inputs
@@ -363,6 +363,11 @@ class DakitariInstructModel(keras.Model):
         self.built = True
     
     def call(self, inputs, training=False):
+        batch_size = tf.shape(inputs)[0]
+        seq_len = tf.shape(inputs)[1]
+
+        mask = tf.ones((batch_size, seq_len))
+        
         # Handle different input types
         if isinstance(inputs, dict):
             x = inputs['input_ids']
